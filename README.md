@@ -1,1 +1,1 @@
-# Burger Builder using React Redux
+# Burger Builder using React and Redux

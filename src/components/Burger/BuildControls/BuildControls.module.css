@@ -38,12 +38,28 @@
     animation: enable 0.3s linear;
 }
 
+.OrderButton:disabled {
+    animation: disable 0.3s linear;
+}
+
+@keyframes disable {
+    0% {
+        transform: scale(1);
+    }
+    60% {
+        transform: scale(0.5);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
 @keyframes enable {
     0% {
         transform: scale(1);
     }
     60% {
-        transform: scale(1.1);
+        transform: scale(0.5);
     }
     100% {
         transform: scale(1);

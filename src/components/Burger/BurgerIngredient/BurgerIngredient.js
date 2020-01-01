@@ -10,7 +10,7 @@ export const INGREDIENTS = {
     'bacon': 'bacon',
     'salad': 'salad',
     'cheese': 'cheese'
-}
+};
 
 class BurgerIngredient extends Component {
     render () {

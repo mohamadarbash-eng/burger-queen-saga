@@ -103,7 +103,7 @@ class BurgerBuilder extends Component {
     };
 
     purchaseContinueHandler = () => {
-        const data = {
+  /*      const data = {
             ingredients: this.state.ingredients,
             price: this.state.totalPrice,
             customer: {
@@ -124,6 +124,8 @@ class BurgerBuilder extends Component {
             .finally(() => {
                 this.setState({loading: false, purchasing: false});
             })
+   */
+  this.props.history.push('/checkout');
     };
 
 

@@ -2,8 +2,8 @@
     margin: 20px auto;
     width: 80%;
     text-align: center;
-    box-shadow: #7f3608;
-    border: 1px solid salmon;
+    box-shadow: inset -1px -3px #c9c9c9;
+    border: 1px solid #ccc;
     padding: 10px;
     box-sizing: border-box;
 }

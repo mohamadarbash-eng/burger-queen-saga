@@ -32,7 +32,7 @@ class BurgerBuilder extends Component {
     };
 
     componentDidMount() {
-        axiosInstance.get('https://burger-queen-92f6d.firebaseio.com/ingredients,json', {
+        axiosInstance.get('/ingredients.json', {
             headers: {
                 "key" : "Access-Control-Allow-Origin",
                 "value" : "*"
@@ -103,29 +103,15 @@ class BurgerBuilder extends Component {
     };
 
     purchaseContinueHandler = () => {
-  /*      const data = {
-            ingredients: this.state.ingredients,
-            price: this.state.totalPrice,
-            customer: {
-                name: 'mo',
-                address: {
-                    street: 'test 1',
-                    zipCode: '0000',
-                    country: 'Germany'
-                },
-                email: 'test@test.com',
-                deliveryMethod: 'fasttest'
-            }
-        };
-        this.setState( {loading: true});
-        axiosInstance.post('/orders.json', data)
-            .then((response) => console.log(response))
-            .catch(error => console.log(error))
-            .finally(() => {
-                this.setState({loading: false, purchasing: false});
-            })
-   */
-  this.props.history.push('/checkout');
+  const queryParams = [];
+  for (let i in this.state.ingredients) {
+      queryParams.push(encodeURIComponent(i) + '=' + encodeURIComponent(this.state.ingredients[i]));
+  }
+  queryParams.push('totalPrice=' + this.state.totalPrice);
+  this.props.history.push({
+      pathname: '/checkout',
+      search: '?' + queryParams.join('&')
+  });
     };
 
 

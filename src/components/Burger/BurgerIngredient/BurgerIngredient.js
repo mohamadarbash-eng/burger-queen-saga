@@ -1,26 +1,26 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
 
-import classes from './BurgerIngredient.module.css';
+import classes from "./BurgerIngredient.module.css";
 
 export const INGREDIENTS = {
-    'breadBottom': 'bread-bottom',
-    'breadTop' : 'bread-top',
-    'meat': 'meat',
-    'bacon': 'bacon',
-    'salad': 'salad',
-    'cheese': 'cheese'
+    "breadBottom": "bread-bottom",
+    "breadTop": "bread-top",
+    "meat": "meat",
+    "bacon": "bacon",
+    "salad": "salad",
+    "cheese": "cheese"
 };
 
 class BurgerIngredient extends Component {
-    render () {
+    render() {
         let ingredient = null;
 
-        switch ( this.props.type ) {
-            case ( INGREDIENTS.breadBottom):
+        switch (this.props.type) {
+            case (INGREDIENTS.breadBottom):
                 ingredient = <div className={classes.BreadBottom}></div>;
                 break;
-            case ( INGREDIENTS.breadTop ):
+            case (INGREDIENTS.breadTop):
                 ingredient = (
                     <div className={classes.BreadTop}>
                         <div className={classes.Seeds1}></div>
@@ -28,16 +28,16 @@ class BurgerIngredient extends Component {
                     </div>
                 );
                 break;
-            case ( INGREDIENTS.meat ):
+            case (INGREDIENTS.meat):
                 ingredient = <div className={classes.Meat}></div>;
                 break;
-            case ( INGREDIENTS.cheese ):
+            case (INGREDIENTS.cheese):
                 ingredient = <div className={classes.Cheese}></div>;
                 break;
-            case ( INGREDIENTS.bacon ):
+            case (INGREDIENTS.bacon):
                 ingredient = <div className={classes.Bacon}></div>;
                 break;
-            case ( INGREDIENTS.salad ):
+            case (INGREDIENTS.salad):
                 ingredient = <div className={classes.Salad}></div>;
                 break;
             default:

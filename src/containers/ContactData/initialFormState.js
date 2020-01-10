@@ -81,6 +81,5 @@ export const initFormState = {
             valid: true
         },
     },
-    loading: false,
     formIsValid: false
 };

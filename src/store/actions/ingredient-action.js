@@ -31,7 +31,7 @@ export const setError = () => {
 
 export const initIngredient = () => {
     return dispatch => {
-        axiosInstance.get("/ingredients.js", {
+        axiosInstance.get("/ingredients.json", {
             headers: {
                 "key": "Access-Control-Allow-Origin",
                 "value": "*"

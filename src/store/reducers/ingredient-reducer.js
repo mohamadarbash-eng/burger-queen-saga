@@ -35,7 +35,8 @@ const ingredientReducer = (state = initialState, action) => {
             return {
                 ...state,
                 ingredients: action.ingredients,
-                error: false
+                error: false,
+                totalPrice: initialState.totalPrice
             };
         case actionsEnum.SET_ERROR:
             return {

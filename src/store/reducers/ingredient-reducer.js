@@ -7,7 +7,6 @@ const initialState = {
     error: false
 };
 
-
 const ingredientReducer = (state = initialState, action) => {
 
     switch (action.type) {

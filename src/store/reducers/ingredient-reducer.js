@@ -1,15 +1,10 @@
-
-import actionsEnum from './../actions/action-types';
-import { INGREDIENT_PRICES } from './../../containers/BurgerBuilder/BurgerBuilder';
+import actionsEnum from "./../actions/action-types";
+import { INGREDIENT_PRICES } from "./../../containers/BurgerBuilder/BurgerBuilder";
 
 const initialState = {
-    ingredients: {
-        salad:0,
-        bacon: 0,
-        cheese: 0,
-        meat: 0
-    },
+    ingredients: null,
     totalPrice: 4,
+    error: false
 };
 
 
@@ -32,9 +27,20 @@ const ingredientReducer = (state = initialState, action) => {
                 ...state,
                 ingredients: {
                     ...state.ingredients,
-                    [action.ingredientName]: currentIngredient > 1 ? currentIngredient - 1: 0,
+                    [action.ingredientName]: currentIngredient > 1 ? currentIngredient - 1 : 0,
                 },
                 totalPrice: state.totalPrice - INGREDIENT_PRICES[action.ingredientName]
+            };
+        case actionsEnum.SET_INGREDIENTS:
+            return {
+                ...state,
+                ingredients: action.ingredients,
+                error: false
+            };
+        case actionsEnum.SET_ERROR:
+            return {
+                ...state,
+                error: true
             };
         default:
             return state;

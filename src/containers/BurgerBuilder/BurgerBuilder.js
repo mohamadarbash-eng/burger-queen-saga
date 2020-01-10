@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+
 
 import Burger from "../../components/Burger/Burger";
 import BuildControls from "../../components/Burger/BuildControls/BuildControls";
@@ -7,8 +9,7 @@ import OrderSummary from "../../components/Burger/OrderSummary/OrderSummary";
 import axiosInstance from "../../axios-orders";
 import Spinner from "../../components/UI/Spinner/Spinner";
 import withErrorHandler from "../../hoc/withErrorHandler/withErrorHandler";
-import actionsEnum from "./../../store/actions/action-types";
-import { connect } from "react-redux";
+import * as actions from "./../../store/actions/index";
 
 export const INGREDIENT_PRICES = {
     salad: 0.5,
@@ -22,19 +23,10 @@ class BurgerBuilder extends Component {
     state = {
         purchasing: false,
         loading: false,
-        error: false
     };
 
     componentDidMount() {
-        axiosInstance.get("/ingredients.json", {
-            headers: {
-                "key": "Access-Control-Allow-Origin",
-                "value": "*"
-            }
-        })
-            .then((response) => {
-                this.setState({ingredients: response.data})
-            }).catch((error) => this.setState({error}))
+        this.props.onSetIngredients();
     }
 
     updatePurchaseState() {
@@ -80,8 +72,7 @@ class BurgerBuilder extends Component {
         if (this.state.loading) {
             orderSummery = <Spinner/>;
         }
-
-        let burger = this.state.error ? <p>Something is wrong please try later</p> : <Spinner/>;
+        let burger = this.props.error ? <p>Something is wrong please try later</p> : <Spinner/>;
         if (!!this.props.ingredients) {
             burger = (
                 <React.Fragment>
@@ -111,14 +102,16 @@ class BurgerBuilder extends Component {
 const mapStateToProps = state => {
     return {
         ingredients: state.ingredients,
-        totalPrice: state.totalPrice
+        totalPrice: state.totalPrice,
+        error: state.error
     }
 };
 
 const mapDispatchToProps = dispatch => {
     return {
-        onIngredientAdded: (name) => dispatch({type: actionsEnum.ADD_INGREDIENT, ingredientName: name}),
-        onIngredientRemoved: (name) => dispatch({type: actionsEnum.REMOVE_INGREDIENT, ingredientName: name}),
+        onIngredientAdded: (name) => dispatch(actions.addIngredient(name)),
+        onIngredientRemoved: (name) => dispatch(actions.removeIngredient(name)),
+        onSetIngredients: () => dispatch(actions.initIngredient())
     }
 };
 

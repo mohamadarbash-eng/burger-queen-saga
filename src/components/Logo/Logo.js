@@ -1,6 +1,6 @@
 import React from "react";
 
-import burgerLogo from "../../../public/favicon.ico";
+import burgerLogo from "./../../assets/images/burger-logo.png";
 import classes from "./Logo.module.css";
 
 const logo = (props) => (

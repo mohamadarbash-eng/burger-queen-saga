@@ -5,12 +5,18 @@ const initialState = {
     token: null,
     userId: null,
     error: null,
-    loading: false
+    loading: false,
+    authRedirect: '/'
 };
 
 
 const authReducer = (state = initialState, action) => {
     switch (action.type) {
+        case actionsEnum.SET_AUTH_REDIRECT_PATH:
+            return {
+                ...state,
+                authRedirect: action.path
+            };
         case actionsEnum.LOG_OUT:
             return {
                 ...state,

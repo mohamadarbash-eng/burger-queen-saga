@@ -35,6 +35,13 @@ export const logout = () => {
     }
 };
 
+export const setAuthRedirect = (path) => {
+    return {
+        type: actionsEnum.SET_AUTH_REDIRECT_PATH,
+        path
+    }
+};
+
 export const auth = (email, password, isSignUp) => {
     return dispatch => {
         dispatch(authStart());

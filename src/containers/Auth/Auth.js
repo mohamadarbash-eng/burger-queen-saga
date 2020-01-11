@@ -42,8 +42,11 @@ class Auth extends Component {
         },
         isSignUp: true
     };
+
     componentDidMount() {
-        console.log(this.props);
+        if (!this.props.building && this.props.authRedirect) {
+            this.props.onAuthRedirect();
+        }
     }
 
     setTouched = (key) => {
@@ -105,13 +108,13 @@ class Auth extends Component {
     render() {
         let redirect, form, error = null;
         if (this.props.isAuth) {
-            redirect = <Redirect to='/'/>
+            redirect = <Redirect to={this.props.authRedirect}/>
         } else {
             const orderFormArray = [];
             for (let key in this.state.controls) {
                 orderFormArray.push({id: key, config: this.state.controls[key]})
             }
-             form = (<React.Fragment>
+            form = (<React.Fragment>
                 <form onSubmit={this.authHandler}>
                     {orderFormArray.map(element => (
                         <Input key={element.id}
@@ -151,14 +154,17 @@ const mapStateToProps = state => {
     return {
         loading: state.auth.loading,
         error: state.auth.error,
-        isAuth: !!state.auth.token
+        isAuth: !!state.auth.token,
+        authRedirect: state.auth.authRedirect,
+        building: state.ingredient.building
     };
 };
 
 const mapDispatchToProps = dispatch => {
     return {
-        onAuth: (email, password, isSignUp) => dispatch(actions.auth(email, password, isSignUp))
-    }
+        onAuth: (email, password, isSignUp) => dispatch(actions.auth(email, password, isSignUp)),
+        onAuthRedirect: () => dispatch(actions.setAuthRedirect("/"))
+    };
 };
 
 

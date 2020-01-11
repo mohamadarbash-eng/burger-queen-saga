@@ -4,7 +4,8 @@ import { INGREDIENT_PRICES } from "./../../containers/BurgerBuilder/BurgerBuilde
 const initialState = {
     ingredients: null,
     totalPrice: 4,
-    error: false
+    error: false,
+    building: false
 };
 
 const ingredientReducer = (state = initialState, action) => {
@@ -17,7 +18,8 @@ const ingredientReducer = (state = initialState, action) => {
                     ...state.ingredients,
                     [action.ingredientName]: state.ingredients[action.ingredientName] + 1,
                 },
-                totalPrice: state.totalPrice + INGREDIENT_PRICES[action.ingredientName]
+                totalPrice: state.totalPrice + INGREDIENT_PRICES[action.ingredientName],
+                building: true
             };
 
         case actionsEnum.REMOVE_INGREDIENT:
@@ -28,14 +30,16 @@ const ingredientReducer = (state = initialState, action) => {
                     ...state.ingredients,
                     [action.ingredientName]: currentIngredient > 1 ? currentIngredient - 1 : 0,
                 },
-                totalPrice: state.totalPrice - INGREDIENT_PRICES[action.ingredientName]
+                totalPrice: state.totalPrice - INGREDIENT_PRICES[action.ingredientName],
+                building: true
             };
         case actionsEnum.SET_INGREDIENTS:
             return {
                 ...state,
                 ingredients: action.ingredients,
                 error: false,
-                totalPrice: initialState.totalPrice
+                totalPrice: initialState.totalPrice,
+                building: false
             };
         case actionsEnum.SET_ERROR:
             return {

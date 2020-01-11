@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
-
 import Burger from "../../components/Burger/Burger";
 import BuildControls from "../../components/Burger/BuildControls/BuildControls";
 import Modal from "../../components/UI/Modal/Modal";
@@ -19,7 +18,6 @@ export const INGREDIENT_PRICES = {
 };
 
 class BurgerBuilder extends Component {
-
     state = {
         purchasing: false,
         loading: false,
@@ -41,6 +39,7 @@ class BurgerBuilder extends Component {
         if (this.props.isAuth) {
             this.setState({purchasing: true});
         } else {
+            this.props.onAuthRedirect('/checkout');
           this.props.history.push('/auth');
         }
     };
@@ -119,6 +118,7 @@ const mapDispatchToProps = dispatch => {
         onIngredientRemoved: (name) => dispatch(actions.removeIngredient(name)),
         onSetIngredients: () => dispatch(actions.initIngredient()),
         onPurchaseInit: () => dispatch(actions.purchaseInit()),
+        onAuthRedirect: (path) => dispatch(actions.setAuthRedirect(path))
     }
 };
 

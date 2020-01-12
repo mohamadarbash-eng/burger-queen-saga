@@ -32,7 +32,7 @@ const orderReducer = (state = initialState, action) => {
             return {
                 ...state,
                 purchased: false
-            }
+            };
         case actionsEnum.PURCHASE_BURGER_START:
             return {
                 ...state,

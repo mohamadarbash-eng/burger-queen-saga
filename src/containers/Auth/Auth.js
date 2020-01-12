@@ -7,6 +7,7 @@ import Button from "../../components/UI/Button/Button";
 import classes from "./Auth.module.css";
 import * as actions from "./../../store/actions/index";
 import Spinner from "../../components/UI/Spinner/Spinner";
+import { checkValidity } from "../../shared/utility";
 
 class Auth extends Component {
     state = {
@@ -66,7 +67,7 @@ class Auth extends Component {
             const updatedForm = {
                 ...prevState.controls
             };
-            updatedForm[key].valid = this.checkValidity(value, updatedForm[key].validation);
+            updatedForm[key].valid = checkValidity(value, updatedForm[key].validation);
             updatedForm[key].touched = true;
             updatedForm[key].value = value;
             let formIsValid = true;
@@ -78,17 +79,6 @@ class Auth extends Component {
             return {controls: updatedForm, formIsValid};
         });
     };
-
-    checkValidity(value, rules) {
-        let isValid = true;
-        if (rules && rules.required) {
-            isValid = !!value && value.trim() && isValid;
-        }
-        if (rules && rules.minLength) {
-            isValid = value.trim().length >= rules.minLength && isValid;
-        }
-        return isValid;
-    }
 
     authHandler = (event) => {
         event.preventDefault();

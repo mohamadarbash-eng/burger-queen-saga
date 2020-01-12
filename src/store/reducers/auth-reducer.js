@@ -36,7 +36,6 @@ const authReducer = (state = initialState, action) => {
                 loading: true
             };
         case actionsEnum.AUTH_SUCCESS:
-            console.log(action);
             return {
                 ...state,
                 token: action.idToken,

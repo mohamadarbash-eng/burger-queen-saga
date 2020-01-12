@@ -48,7 +48,6 @@ export const setAuthRedirect = (path) => {
 export const authCheckState = () => {
   return dispatch => {
       const token = localStorage.getItem('idToken');
-      console.log(token);
       if (!token) {
           dispatch(logout());
       } else {

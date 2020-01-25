@@ -6,4 +6,15 @@
     left: 0;
     top: 0;
     background-color: rgba(0, 0, 0, 0.5);
+    transition: all 0.8s ease-in-out;
+}
+
+.BackdropOpen {
+    transform: translateY(0);
+    opacity:  1;
+}
+
+.BackdropClose {
+    transform:  translateY(-100vh);
+    opacity: 0;
 }

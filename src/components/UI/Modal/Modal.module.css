@@ -9,8 +9,19 @@
     left: 15%;
     top: 30%;
     box-sizing: border-box;
-    transition: all 0.3s ease-out;
+    transition: all 1s ease-in-out;
 }
+
+.ModalOpen {
+    transform: translateY(0);
+    opacity:  1;
+}
+
+.ModalClose {
+    transform:  translateY(+100vh);
+    opacity: 0;
+}
+
 
 @media (min-width: 600px) {
     .Modal {

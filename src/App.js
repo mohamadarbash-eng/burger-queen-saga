@@ -1,4 +1,4 @@
-import React, { Component, Suspense } from "react";
+import React, { Suspense, useEffect } from "react";
 import { Route, Switch, withRouter, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 
@@ -12,12 +12,12 @@ import Spinner from "./components/UI/Spinner/Spinner";
 const Auth = React.lazy(() => import("./containers/Auth/Auth"));
 const Orders = React.lazy(() => import("./containers/Orders/Orders"));
 
-class App extends Component {
-    componentDidMount() {
-        this.props.onIsUserAuthenticated();
-    }
+const App = (props)=> {
 
-    render() {
+    useEffect(() => {
+        props.onIsUserAuthenticated();
+    }, []);
+
         let routes = (
             <Switch>
                 <Route path='/auth'
@@ -29,7 +29,7 @@ class App extends Component {
                 <Redirect to="/"/>
             </Switch>
         );
-        if (this.props.isAuthenticated) {
+        if (props.isAuthenticated) {
             routes = (
                 <Switch>
                     <Route path="/checkout" component={Checkout}/>
@@ -50,8 +50,7 @@ class App extends Component {
                 </Layout>
             </div>
         );
-    }
-}
+};
 
 const mapStateToProps = state => {
     return {

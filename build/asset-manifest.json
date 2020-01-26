@@ -1,0 +1,31 @@
+{
+  "files": {
+    "main.css": "/burger-queen/static/css/main.9af31015.chunk.css",
+    "main.js": "/burger-queen/static/js/main.221f6782.chunk.js",
+    "main.js.map": "/burger-queen/static/js/main.221f6782.chunk.js.map",
+    "runtime-main.js": "/burger-queen/static/js/runtime-main.643e26fd.js",
+    "runtime-main.js.map": "/burger-queen/static/js/runtime-main.643e26fd.js.map",
+    "static/js/2.4569a9e2.chunk.js": "/burger-queen/static/js/2.4569a9e2.chunk.js",
+    "static/js/2.4569a9e2.chunk.js.map": "/burger-queen/static/js/2.4569a9e2.chunk.js.map",
+    "static/css/3.8a86ca4d.chunk.css": "/burger-queen/static/css/3.8a86ca4d.chunk.css",
+    "static/js/3.e306941a.chunk.js": "/burger-queen/static/js/3.e306941a.chunk.js",
+    "static/js/3.e306941a.chunk.js.map": "/burger-queen/static/js/3.e306941a.chunk.js.map",
+    "static/css/4.80cb49a1.chunk.css": "/burger-queen/static/css/4.80cb49a1.chunk.css",
+    "static/js/4.6fc27b1a.chunk.js": "/burger-queen/static/js/4.6fc27b1a.chunk.js",
+    "static/js/4.6fc27b1a.chunk.js.map": "/burger-queen/static/js/4.6fc27b1a.chunk.js.map",
+    "index.html": "/burger-queen/index.html",
+    "precache-manifest.5919355783f88fb861fdde4bf8d1a1bf.js": "/burger-queen/precache-manifest.5919355783f88fb861fdde4bf8d1a1bf.js",
+    "service-worker.js": "/burger-queen/service-worker.js",
+    "static/css/3.8a86ca4d.chunk.css.map": "/burger-queen/static/css/3.8a86ca4d.chunk.css.map",
+    "static/css/4.80cb49a1.chunk.css.map": "/burger-queen/static/css/4.80cb49a1.chunk.css.map",
+    "static/css/main.9af31015.chunk.css.map": "/burger-queen/static/css/main.9af31015.chunk.css.map",
+    "static/js/2.4569a9e2.chunk.js.LICENSE": "/burger-queen/static/js/2.4569a9e2.chunk.js.LICENSE",
+    "static/media/burger-logo.png": "/burger-queen/static/media/burger-logo.b8503d26.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.643e26fd.js",
+    "static/js/2.4569a9e2.chunk.js",
+    "static/css/main.9af31015.chunk.css",
+    "static/js/main.221f6782.chunk.js"
+  ]
+}

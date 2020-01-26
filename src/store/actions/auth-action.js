@@ -30,11 +30,11 @@ export const checkAuthTimeout = (expirationTime) => {
 };
 
 export const logout = () => {
-    localStorage.removeItem('idToken');
+  /*  localStorage.removeItem('idToken');
     localStorage.removeItem('expiresDate');
-    localStorage.removeItem('localId');
+    localStorage.removeItem('localId'); */
     return {
-        type: actionsEnum.LOG_OUT
+        type: actionsEnum.AUTH_INIT_LOGOUT
     }
 };
 

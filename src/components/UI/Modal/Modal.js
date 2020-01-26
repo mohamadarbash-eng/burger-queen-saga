@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { CSSTransition } from 'react-transition-group';
-import classes from "./Modal.css";
 import Backdrop from "../Backdrop/Backdrop";
 
 

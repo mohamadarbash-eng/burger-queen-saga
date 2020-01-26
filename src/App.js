@@ -12,44 +12,44 @@ import Spinner from "./components/UI/Spinner/Spinner";
 const Auth = React.lazy(() => import("./containers/Auth/Auth"));
 const Orders = React.lazy(() => import("./containers/Orders/Orders"));
 
-const App = (props)=> {
-
+const App = (props) => {
+    const {onIsUserAuthenticated} = props;
     useEffect(() => {
-        props.onIsUserAuthenticated();
-    }, []);
+        onIsUserAuthenticated();
+    }, [onIsUserAuthenticated]);
 
-        let routes = (
+    let routes = (
+        <Switch>
+            <Route path='/auth'
+                   render={(props) => <Suspense fallback={<Spinner/>}> <Auth {...props}/></Suspense>}/>
+            <Route path='/orders'
+                   render={(props) => <Suspense fallback={<Spinner/>}> <Orders {...props}/></Suspense>}/>
+            <Route path="/logout" component={Logout}/>
+            <Route path="/" exact component={BurgerBuilder}/>
+            <Redirect to="/"/>
+        </Switch>
+    );
+    if (props.isAuthenticated) {
+        routes = (
             <Switch>
-                <Route path='/auth'
-                       render={(props) => <Suspense fallback={<Spinner/>}> <Auth {...props}/></Suspense>}/>
+                <Route path="/checkout" component={Checkout}/>
                 <Route path='/orders'
                        render={(props) => <Suspense fallback={<Spinner/>}> <Orders {...props}/></Suspense>}/>
+                <Route path='/auth'
+                       render={(props) => <Suspense fallback={<Spinner/>}> <Auth {...props}/></Suspense>}/>
                 <Route path="/logout" component={Logout}/>
                 <Route path="/" exact component={BurgerBuilder}/>
                 <Redirect to="/"/>
             </Switch>
         );
-        if (props.isAuthenticated) {
-            routes = (
-                <Switch>
-                    <Route path="/checkout" component={Checkout}/>
-                    <Route path='/orders'
-                           render={(props) => <Suspense fallback={<Spinner/>}> <Orders {...props}/></Suspense>}/>
-                    <Route path='/auth'
-                           render={(props) => <Suspense fallback={<Spinner/>}> <Auth {...props}/></Suspense>}/>
-                    <Route path="/logout" component={Logout}/>
-                    <Route path="/" exact component={BurgerBuilder}/>
-                    <Redirect to="/"/>
-                </Switch>
-            );
-        }
-        return (
-            <div>
-                <Layout>
-                    {routes}
-                </Layout>
-            </div>
-        );
+    }
+    return (
+        <div>
+            <Layout>
+                {routes}
+            </Layout>
+        </div>
+    );
 };
 
 const mapStateToProps = state => {

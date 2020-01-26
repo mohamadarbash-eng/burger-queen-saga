@@ -12,16 +12,35 @@
     transition: all 1s ease-in-out;
 }
 
-.ModalOpen {
-    transform: translateY(0);
+.fade-modal-enter {
+    transform: translateY(+100vh);
     opacity:  1;
 }
 
-.ModalClose {
+.fade-modal-enter-active {
+animation: slidein 1s ease-in-out forwards;
+}
+
+.fade-modal-exit {
+    transform:  translateY(+50vh);
+    opacity: 0;
+}
+
+.fade-modal-exit-active {
+
     transform:  translateY(+100vh);
     opacity: 0;
 }
 
+@keyframes slidein {
+    from {
+        transform: translateY(+100vh);
+    }
+
+    to {
+        transform: translateY(0);
+    }
+}
 
 @media (min-width: 600px) {
     .Modal {

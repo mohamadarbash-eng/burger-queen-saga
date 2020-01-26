@@ -1,4 +1,5 @@
-{ "homepage": "http://mohamadarbash-eng.github.io/burger-queen",
+{
+  "homepage": "http://mohamadarbash-eng.github.io/burger-queen",
   "name": "burger",
   "version": "0.1.0",
   "private": true,
@@ -54,6 +55,7 @@
     "react-redux": "^7.1.3",
     "react-router-dom": "^5.1.2",
     "react-test-renderer": "^16.12.0",
+    "react-transition-group": "^4.3.0",
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0",
     "resolve": "1.12.2",
